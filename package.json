@@ -1,0 +1,28 @@
+{
+  "name": "easyassist-ai-monorepo",
+  "version": "1.0.0",
+  "description": "EasyAssist AI - Making AI answers simple enough for everyone to understand.",
+  "scripts": {
+    "install:all": "npm.cmd --prefix backend install && npm.cmd --prefix frontend install",
+    "server": "npm.cmd --prefix backend run dev",
+    "client": "npm.cmd --prefix frontend run dev",
+    "dev": "npx.cmd concurrently \"npm.cmd --prefix backend run dev\" \"npm.cmd --prefix frontend run dev\" --names \"BACKEND,FRONTEND\" --prefix-colors \"blue,green\"",
+    "build": "npm.cmd --prefix frontend run build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "keywords": [
+    "ai",
+    "chatbot",
+    "easyassist",
+    "education",
+    "hackathon",
+    "full-stack",
+    "react",
+    "express",
+    "mongodb"
+  ],
+  "author": "EasyAssist Team",
+  "license": "MIT"
+}
