@@ -55,7 +55,7 @@ app.use('/api', chatRoutes);
 app.use('/api', feedbackRoutes);
 app.use('/api', statsRoutes);
 
-// Root route
+// Root & Health routes
 app.get('/', (req, res) => {
   res.json({
     name: 'EasyAssist AI API',
@@ -63,6 +63,10 @@ app.get('/', (req, res) => {
     mission: 'Making AI answers simple enough for everyone to understand.',
     documentation: '/api/health',
   });
+});
+
+app.get('/health', (req, res) => {
+  res.redirect('/api/health');
 });
 
 // Centralized Error Handling
