@@ -69,7 +69,7 @@ app.get('/', (req, res) => {
 app.use(errorHandler);
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 EasyAssist AI backend running on http://localhost:${PORT}`);
   console.log(`📡 Client allowed: ${allowedOrigin}`);
   console.log(`🤖 AI Provider: ${process.env.AI_PROVIDER || 'gemini'}`);
