@@ -85,7 +85,8 @@ export const chatController = async (req, res) => {
 
         return res.status(500).json({
             success: false,
-            message: "Something went wrong while processing your message."
+            error: error.message || "Something went wrong while processing your message.",
+            message: error.message || "Something went wrong while processing your message."
         });
     }
 };

@@ -117,9 +117,22 @@ export function useChat() {
       loadChats();
       return response;
     } catch (err) {
-      setError(err.message || "I'm having trouble connecting right now. Please try again in a moment.");
-      // Rollback optimistic message if error
-      setMessages((prev) => prev.filter((m) => m._id !== tempUserMsg._id));
+      const errorMsg = err.message || "I'm having trouble connecting right now. Please try again in a moment.";
+      setError(errorMsg);
+      // Provide an immediate assistant error reply so the user always sees a response
+      const errorAssistantMsg = {
+        _id: `err-${Date.now()}`,
+        role: 'assistant',
+        content: `⚠️ **Could not generate response:** ${errorMsg}\n\n*If you are running the project locally, please verify that both the backend (\`npm run server\`) and frontend are running.*`,
+        timestamp: new Date().toISOString(),
+        mode: effectiveMode,
+        isError: true,
+      };
+      setMessages((prev) => [
+        ...prev.filter((m) => m._id !== tempUserMsg._id),
+        tempUserMsg,
+        errorAssistantMsg,
+      ]);
     } finally {
       setIsLoading(false);
     }

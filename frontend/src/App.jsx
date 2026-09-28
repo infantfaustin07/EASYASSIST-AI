@@ -269,6 +269,47 @@ export default function App() {
 
             {/* Messages Scroll Area */}
             <div className="chat-messages-container">
+              {error && (
+                <div
+                  style={{
+                    margin: '16px auto',
+                    maxWidth: '800px',
+                    width: '90%',
+                    padding: '12px 18px',
+                    background: 'rgba(224, 35, 28, 0.15)',
+                    border: '1px solid rgba(224, 35, 28, 0.4)',
+                    borderRadius: 'var(--radius-md)',
+                    color: '#fca5a5',
+                    fontSize: '0.88rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    fontFamily: "'Onest', sans-serif",
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span>⚠️</span>
+                    <span>{error}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setError(null)}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#fca5a5',
+                      cursor: 'pointer',
+                      fontWeight: 'bold',
+                      fontSize: '1rem',
+                      marginLeft: '12px',
+                    }}
+                    title="Dismiss alert"
+                  >
+                    ✕
+                  </button>
+                </div>
+              )}
+
               {messages.length === 0 ? (
                 <QuickPrompts
                   onSelectPrompt={handleSelectPrompt}
@@ -299,38 +340,6 @@ export default function App() {
                       <span className="typing-text" style={{ fontFamily: "'Onest', sans-serif" }}>
                         EasyAssist AI is formulating {mode === 'simple' ? 'a simple explanation...' : 'an elaborate breakdown...'}
                       </span>
-                    </div>
-                  )}
-
-                  {/* Error Notification */}
-                  {error && (
-                    <div
-                      style={{
-                        padding: '12px 18px',
-                        background: 'rgba(224, 35, 28, 0.12)',
-                        border: '1px solid rgba(224, 35, 28, 0.4)',
-                        borderRadius: 'var(--radius-md)',
-                        color: '#fca5a5',
-                        fontSize: '0.88rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                      }}
-                    >
-                      <span>{error}</span>
-                      <button
-                        type="button"
-                        onClick={() => setError(null)}
-                        style={{
-                          background: 'none',
-                          border: 'none',
-                          color: '#fca5a5',
-                          cursor: 'pointer',
-                          fontWeight: 'bold',
-                        }}
-                      >
-                        ✕
-                      </button>
                     </div>
                   )}
 

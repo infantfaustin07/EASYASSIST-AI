@@ -17,7 +17,7 @@ const MessageSchema = new mongoose.Schema({
   },
   mode: {
     type: String,
-    enum: ['simple', 'detailed'],
+    enum: ['simple', 'detailed', 'elaborate'],
     default: 'simple',
   },
   timestamp: {
